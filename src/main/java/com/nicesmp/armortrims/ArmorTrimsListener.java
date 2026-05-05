@@ -28,8 +28,9 @@ public class ArmorTrimsListener implements Listener {
     // ─────────────────────────────────────────────
     // IRON TRIM — Knockback immunity
     // ─────────────────────────────────────────────
-    @EventHandler(priority = EventPriority.HIGH)
-    public void onKnockback(EntityKnockbackEvent event) {
+    @SuppressWarnings("deprecation")
+@EventHandler(priority = EventPriority.HIGH)
+public void onKnockback(EntityKnockbackEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (!"iron".equals(TrimHelper.getFullSetTrimMaterial(player))) return;
         event.setCancelled(true);
