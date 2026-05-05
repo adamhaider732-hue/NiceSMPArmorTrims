@@ -40,8 +40,9 @@ public class TrimHelper {
         if (!(item.getItemMeta() instanceof ArmorMeta meta)) return null;
         ArmorTrim trim = meta.getTrim();
         if (trim == null) return null;
-        TrimMaterial mat = trim.getMaterial().value();
+        TrimMaterial mat = trim.getMaterial();
         if (mat == null) return null;
+        // Get the key directly from the RegistryKeyHolder
         return mat.getKey().getKey();
     }
 }
