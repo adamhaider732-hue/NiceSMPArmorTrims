@@ -15,6 +15,7 @@ public class TrimHelper {
         ItemStack leggings = player.getInventory().getLeggings();
         ItemStack boots = player.getInventory().getBoots();
 
+        // All four pieces must be present
         if (!isArmorPiece(helmet) || !isArmorPiece(chestplate) ||
             !isArmorPiece(leggings) || !isArmorPiece(boots)) {
             return null;
@@ -25,13 +26,16 @@ public class TrimHelper {
         String l = getTrimMaterial(leggings);
         String b = getTrimMaterial(boots);
 
+        // All four must have the same trim material
         if (h == null || c == null || l == null || b == null) return null;
         if (h.equals(c) && c.equals(l) && l.equals(b)) return h;
         return null;
     }
 
+    // Works with ANY armor type - leather, iron, gold, diamond, netherite
     private static boolean isArmorPiece(ItemStack item) {
         if (item == null || item.getType() == Material.AIR) return false;
+        // Check if it has ArmorMeta (works for all armor types)
         return item.getItemMeta() instanceof ArmorMeta;
     }
 
@@ -42,7 +46,6 @@ public class TrimHelper {
         if (trim == null) return null;
         TrimMaterial mat = trim.getMaterial();
         if (mat == null) return null;
-        // Get the key directly from the RegistryKeyHolder
         return mat.getKey().getKey();
     }
 }

@@ -21,24 +21,17 @@ public class ArmorTrimsTask implements Runnable {
             switch (trim) {
                 case "iron" -> applyKnockbackImmunity(player);
                 case "emerald" -> applyEmeraldEffect(player);
-                case "lapis" -> {} // handled in event listener
-                case "quartz" -> {} // handled in task below with stillness check
-                case "gold" -> {} // handled in event listener
-                case "diamond" -> {} // handled in event listener
-                case "chain" -> {} // handled in event listener
-                case "copper" -> {} // handled in event listener
+                // All others handled in event listener
             }
         }
     }
 
     private void applyKnockbackImmunity(Player player) {
-        // Apply a high resistance effect to simulate knockback immunity
-        // We handle actual knockback cancel in the listener
         player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 40, 0, false, false, false));
     }
 
     private void applyEmeraldEffect(Player player) {
-        // Saturation so food lasts longer (slow hunger drain)
+        // Slow hunger drain by applying saturation
         player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 40, 0, false, false, false));
     }
 }
